@@ -1,6 +1,6 @@
 ---
 title: "General Social Survey"
-author: "Your Name"
+author: "Michael Monreal"
 date: "Year 2019"
 output: 
   html_document:
@@ -48,11 +48,13 @@ This data is from the 2018 General Social Survey. The first blocks of R-code has
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+The method I used was a chi-squared test.
 
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
-
+The evidence was enough to prove the null.
+  
 ### Descriptive Results
 
 #### Graphical Descriptive Results
@@ -76,24 +78,35 @@ Now answer Is belief in the bigbang theory (BIGBANG) independent of belief in th
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
+The method we used was Chi-squared test.
 
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+Not enough evidence to reject the null.
 
 ### Descriptive Results
+People who believe in the big bang theory don't believe in the afterlife because they have science as evidence. Vice versa, the people who believe in the afterlife believe in religion.
 
 #### Graphical Descriptive Results
-
-<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
-
+```{r}
+barchartGC(~BIGBANG+POSTLIFE, data=mydata4, type = "percent") 
+chisqtestGC(~BIGBANG+POSTLIFE, data=mydata4)
+votetab2=xtabs(~BIGBANG+POSTLIFE, data=mydata4)
+fisher.test(votetab2)
+```
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+rowPerc(votetab2)
+colPerc(votetab2)
+```
 
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+The people who believed in the big bang theory didn't beieve in the afterlife because of their belief in science.
 
 # Introduction Question 3
 
@@ -104,27 +117,39 @@ This time compare the opinion on death penalty (CAPPUN) with opinion on courts (
 ## Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
-
+The method we used was a Chi-squared test.
+   
 ##Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
-
+There was enough evidence to deny the null.
+   
 ### Descriptive Results
-
+People who believed in capital punishment believed that the death sentance wasn't too harsh.
+   
 #### Graphical Descriptive Results
 
-<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+barchartGC(~CAPPUN+COURTS, data=mydata4, type = "percent") 
+chisqtestGC(~CAPPUN+COURTS, data=mydata4)
+votetab3=xtabs(~CAPPUN+COURTS, data=mydata4)
+fisher.test(votetab3)
+```
 
 #### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+rowPerc(votetab3)
+colPerc(votetab3)
+```
 
 ### Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
-
+If you believed that the death sentance was too harsh, then you oppposed it, but vice versa if you believed in the death sentance you favored it.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-
+The variables being related to one another caused many of te nulls to be proven, and without much evidence others were denied.
